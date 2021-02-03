@@ -15,6 +15,8 @@ The name is Cherry TI.
 
 If you have any concerns, please raise an issue. Also, please do more and more pull requests. I'm so happy that I'm very welcome.
 
+## Folder structure
+
 ## Author
 [fumiya5863](https://github.com/fumiya5863)
 
