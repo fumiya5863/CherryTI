@@ -17,3 +17,4 @@ The name is Cherry TI.
 ## Author
 [fumiya5863](https://github.com/fumiya5863)
 
+## License
