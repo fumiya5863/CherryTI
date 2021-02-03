@@ -18,3 +18,4 @@ The name is Cherry TI.
 [fumiya5863](https://github.com/fumiya5863)
 
 ## License
+The source code is licensed MIT.
