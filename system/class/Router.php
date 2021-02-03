@@ -16,7 +16,7 @@ class _Route{
      * @param string $_method_name
      * @return void
      */
-    public static function _get(string $_match_rule, string $_class_name, $_method_name){
+    public static function _get(string $_match_rule, string $_class_name, string $_method_name){
         if (!IS_GET) {
             return;
         }
@@ -31,7 +31,7 @@ class _Route{
      * @param string $_method_name
      * @return void
      */
-    public static function _post(string $_match_rule, $_class_name, $_method_name){
+    public static function _post(string $_match_rule, string $_class_name, string $_method_name){
         if (!IS_POST) {
             return;
         }
@@ -46,7 +46,7 @@ class _Route{
      * @param string $_method_name
      * @return void
      */
-    public static function _common_run(string $_match_rule, $_class_name, $_method_name){
+    public static function _common_run(string $_match_rule, string $_class_name, string $_method_name){
         $_url_array = explode('/', $_match_rule);
         $_is_var_exists_rule = _Route::_is_var_exists_rule($_match_rule);
         $_var = null;
