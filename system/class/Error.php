@@ -21,8 +21,10 @@ class _Error {
      */
     public function _error_handler(int $_level, string $_message, string $_file, int $_line): void
     {   
+        // $this->_error_set = get_defined_vars();
         $this->_error_value_set($_level, $_message, $_file, $_line);
         
+        // 文字列のtrueよりは0、1の方が良い？
         if (_load_env("APP_ERROR_LOG") === 'true') {
             $this->_error_log();
         }
@@ -76,6 +78,10 @@ class _Error {
     */
    private function _is_error_type(array $_error): bool
    {
+       // そもそも noticeではシャットダウンしない
+       // 暗黙的に↓とするか、もしくはSHUT_DOWN_TYPES
+       // 取り出した時はkeyがtypeだから "ERROR_NAMES" は "ERROR_TYPES" の方が揺れない？
+       // return array_key_exists($error["type"], ERROR_NAMES);
        $_is_error = false;
         switch($_error["type"]){
             case E_ERROR:
