@@ -1,0 +1,14 @@
+{
+    "name": "cherryti/cherryti",
+    "type": "project",
+    "description": "The CherryTI Framework.",
+    "homepage": "https://github.com/fumiya5863/CherryTI",
+    "license": "MIT",
+    "require": {
+        "illuminate/database": "^7.0",
+        "vlucas/phpdotenv": "^5.0"
+    },
+    "config": {
+        "vendor-dir" : "./system/external"
+    }
+}
