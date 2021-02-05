@@ -20,10 +20,12 @@ class _Error {
      * @return void
      */
     public function _error_handler(int $_level, string $_message, string $_file, int $_line): void
-    {   
-        $this->_error_value_set($_level, $_message, $_file, $_line);
-        
-        if (_load_env("APP_ERROR_LOG") === 'true') {
+    {
+        $this->_error_set = get_defined_vars();
+           
+        // envのファイルをtrue,falseでにしたかったです
+        // bool値にキャストして処理するはいいでしょうか？
+        if ((bool)$_ENV["APP_ERROR_LOG"] === true) {
             $this->_error_log();
         }
         
@@ -37,57 +39,26 @@ class _Error {
      */
     public function _error_shutdown_handler()
     {
-        if (!($_error = error_get_last())) {
+        if (!($_tmp_error = error_get_last())) {
             return;
         }
+        $this->_error_set = array_combine([LEVEL, MESSAGE, FILE, LINE], $_tmp_error);
 
-        $_is_error = $this->_is_error_type($_error);
+        $_is_error = $this->_is_error_type();
         
         if ($_is_error){
-            $this->_error_value_set($_error["type"], $_error["message"], $_error["file"], $_error["line"]);
             $this->_error_run();
         }
    }
 
    /**
-    * Undocumented function
-    *
-    * @param int $_level
-    * @param string $_message
-    * @param string $_file
-    * @param int $_line
-    * @return void
-    */
-   private function _error_value_set(int $_level, string $_message, string $_file, int $_line): void
-   {
-       $this->_error_set = [
-           "_level" => $_level,
-           "_message" => $_message,
-           "_file" => $_file,
-           "_line" => $_line,
-       ];
-   }
-
-   /**
     * Whether it matches the type of error
     *
-    * @param array $_error
     * @return boolean
     */
-   private function _is_error_type(array $_error): bool
+   private function _is_error_type(): bool
    {
-       $_is_error = false;
-        switch($_error["type"]){
-            case E_ERROR:
-            case E_PARSE:
-            case E_CORE_ERROR:
-            case E_CORE_WARNING:
-            case E_COMPILE_ERROR:
-            case E_COMPILE_WARNING:
-                $_is_error = true;
-                break;
-        }
-        return $_is_error;
+       return array_key_exists($this->_error_set[LEVEL], ERROR_LEVELS);
    }
 
    /**
@@ -97,7 +68,9 @@ class _Error {
     */
    private function _error_run(): void
    {
-        if (_load_env("APP_DEBUG") === 'true') {
+       // envのファイルをtrue,falseでにしたかったです
+        // bool値にキャストして処理するはいいでしょうか？
+        if ((bool)$_ENV["APP_DEBUG"] === true) {
             $this->_error_display();
         }
         exit;
@@ -110,7 +83,7 @@ class _Error {
     */
     private function _error_log(): void
     {
-        error_log("PHP " . ERROR_NAMES[$this->_error_set["_level"]] . " " . $this->_error_set['_message'] . " " . $this->_error_set['_file'] . " " . $this->_error_set['_line']);
+        error_log("PHP " . ERROR_LEVELS[$this->_error_set[LEVEL]] . " " . $this->_error_set[MESSAGE] . " " . $this->_error_set[FILE] . " " . $this->_error_set[LINE]);
     }
 
     /**
@@ -119,7 +92,7 @@ class _Error {
      * @return void
      */
     private function _error_display(): void
-    {    
+    {
         extract($this->_error_set);
         require_once(ERROR_TEMPLATE_FILE);
     }

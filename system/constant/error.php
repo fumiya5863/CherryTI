@@ -22,9 +22,15 @@ define("ERROR_SHUTDOWN_HANDLER_METHOD", '_error_shutdown_handler');
 define("ERROR_TEMPLATE_FILE", TEMPLATE_PATH . "error.php");
 define("ERROR_TEMPLATE_404_FILE", TEMPLATE_PATH . "404_error.php");
 
-// Error type
+// Error set
+define("LEVEL", "_level");
+define("MESSAGE", "_message");
+define("FILE", "_file");
+define("LINE", "_line");
+
+// Error level
 define(
-    "ERROR_NAMES",
+    "ERROR_LEVELS",
     [
         1    => "ERROR",
         2    => "WARNING",

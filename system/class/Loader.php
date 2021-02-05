@@ -11,11 +11,23 @@ class _Loader {
 
     public function __construct()
     {   
+        $this->_load_env();
+                
         $this->_load_system();
 
         $this->_load_error();
         
         $this->_load_app_route();
+    }
+
+    /**
+     * 
+     *
+     * @return void
+     */
+    private function _load_env(): void
+    {
+        Dotenv\Dotenv::createImmutable(ENV_PATH)->load();
     }
     
     /**
@@ -35,7 +47,20 @@ class _Loader {
      */
     private function _load_error(): void
     {
-        _load_set_error();
+        ini_set(SET_LOG_ERRORS, IS_ON);
+
+        ini_set(SET_ERROR_LOG, ERROR_LOG_PATH);
+        
+        error_reporting(E_ALL);
+    
+        ini_set(SET_DISPLAY_ERRORS, IS_OFF);
+    
+        $_error_class_name = ERROR_CLASS_NAME;
+    
+        $_error_obj = new $_error_class_name;
+    
+        set_error_handler([$_error_obj, ERROR_HANDLER_METHOD]);
+        register_shutdown_function([$_error_obj, ERROR_SHUTDOWN_HANDLER_METHOD]);
     }
 
     /**

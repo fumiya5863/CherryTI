@@ -1,4 +1,4 @@
 composer.lock
 /env/.env
 /system/external
-/storage/log/error.log
+memo.txt

@@ -41,7 +41,7 @@ class _Model {
      * @param object $_array
      * @return array
      */
-    protected function _result_array(object $_array): array
+    protected function result_array(object $_array): array
     {
         $_confirm_arrays = [];
         foreach($_array as $_keys => $_object) {
