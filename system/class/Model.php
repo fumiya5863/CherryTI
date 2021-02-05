@@ -10,11 +10,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class _Model {
 
-    protected $db;
+    protected $_db;
     
     public function __construct()
     {
-        $this->db = $this->_connect();
+        $this->_db = $this->_connect();
     }
 
     /**
@@ -41,7 +41,7 @@ class _Model {
      * @param object $_array
      * @return array
      */
-    protected function result_array(object $_array): array
+    protected function _result_array(object $_array): array
     {
         $_confirm_arrays = [];
         foreach($_array as $_keys => $_object) {

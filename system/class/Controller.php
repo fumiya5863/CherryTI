@@ -27,7 +27,7 @@ class _Controller {
      * @param mixed $_items
      * @return void
      */
-    protected function load_view(string $_view_path, $_items = ''): void
+    protected function _load_view(string $_view_path, $_items = ''): void
     {
         !is_array($_items) && $_items = [$_items];
         foreach($_items as $_key => $_item) {
@@ -43,7 +43,7 @@ class _Controller {
      * @param string $_model_name
      * @return void
      */
-    protected function load_model(string $_model_name): void
+    protected function _load_model(string $_model_name): void
     {
         // Supports variable length arguments
         $args = func_get_args();
