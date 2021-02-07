@@ -64,9 +64,10 @@ class _Route{
             $_var = $_root_url_array[count($_root_url_array)-2];
         }
         
-        _load_app_files(CONTROLLER_PATH, $_class_name);
+        require_once(CONTROLLER_PATH . $_class_name . EXTENSION_PHP);
         $app_class = new $_class_name();
         $app_class->$_method_name();
+        exit;
     }
 
     /**

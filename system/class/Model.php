@@ -10,11 +10,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class _Model {
 
-    protected $db;
+    protected $_db;
     
     public function __construct()
     {
-        $this->db = $this->_connect();
+        $this->_db = $this->_connect();
     }
 
     /**

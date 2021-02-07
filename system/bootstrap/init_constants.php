@@ -19,11 +19,8 @@ define("EXTERNAL_PATH", SYSTEM_PATH . "external/");
 define(
     "SYSTEM_LOAD_PATH",
     [
-        EXTERNAL_PATH => [
-            "autoload.php"
-        ],
         CONSTANT_PATH => [
-            "php_setting.php",
+            "init_setting.php",
             "file.php",
             "path.php",
             "request.php",
@@ -39,6 +36,7 @@ define(
     ]
 );
 
+// Separator related
 define(
     "SEPARATORS",
     [

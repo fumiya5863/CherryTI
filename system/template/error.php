@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p><?= ERROR_NAMES[$_level]; ?></p>
+    <p><?= ERROR_LEVELS[$_level]; ?></p>
     <p><?= $_message; ?></p>
     <p><?= $_file; ?></p>
     <p><?= $_line; ?></p>
