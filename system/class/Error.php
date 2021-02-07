@@ -8,7 +8,12 @@
 
 class _Error {
 
-    private $_error_set;
+    /**
+     * error
+     *
+     * @var array
+     */
+    private $_error;
     
     /**
      * Error handling
@@ -21,11 +26,9 @@ class _Error {
      */
     public function _error_handler(int $_level, string $_message, string $_file, int $_line): void
     {
-        $this->_error_set = get_defined_vars();
+        $this->_error = get_defined_vars();
            
-        // envのファイルをtrue,falseでにしたかったです
-        // bool値にキャストして処理するはいいでしょうか？
-        if ((bool)$_ENV["APP_ERROR_LOG"] === true) {
+        if ($_ENV["APP_ERROR_LOG"] === "On") {
             $this->_error_log();
         }
         
@@ -42,7 +45,7 @@ class _Error {
         if (!($_tmp_error = error_get_last())) {
             return;
         }
-        $this->_error_set = array_combine([LEVEL, MESSAGE, FILE, LINE], $_tmp_error);
+        $this->_error = array_combine([LEVEL, MESSAGE, FILE, LINE], $_tmp_error);
 
         $_is_error = $this->_is_error_type();
         
@@ -58,7 +61,7 @@ class _Error {
     */
    private function _is_error_type(): bool
    {
-       return array_key_exists($this->_error_set[LEVEL], ERROR_LEVELS);
+       return array_key_exists($this->_error[LEVEL], ERROR_LEVELS);
    }
 
    /**
@@ -68,9 +71,7 @@ class _Error {
     */
    private function _error_run(): void
    {
-       // envのファイルをtrue,falseでにしたかったです
-        // bool値にキャストして処理するはいいでしょうか？
-        if ((bool)$_ENV["APP_DEBUG"] === true) {
+        if ($_ENV["APP_DEBUG"] === "On") {
             $this->_error_display();
         }
         exit;
@@ -83,7 +84,7 @@ class _Error {
     */
     private function _error_log(): void
     {
-        error_log("PHP " . ERROR_LEVELS[$this->_error_set[LEVEL]] . " " . $this->_error_set[MESSAGE] . " " . $this->_error_set[FILE] . " " . $this->_error_set[LINE]);
+        error_log("PHP " . ERROR_LEVELS[$this->_error[LEVEL]] . " " . $this->_error[MESSAGE] . " " . $this->_error[FILE] . " " . $this->_error[LINE]);
     }
 
     /**
@@ -93,7 +94,7 @@ class _Error {
      */
     private function _error_display(): void
     {
-        extract($this->_error_set);
+        extract($this->_error);
         require_once(ERROR_TEMPLATE_FILE);
     }
 }
