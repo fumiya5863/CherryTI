@@ -16,6 +16,29 @@ The name is Cherry TI.
 If you have any concerns, please raise an issue. Also, please do more and more pull requests. I'm so happy that I'm very welcome.
 
 ## Folder structure
+```
+- app/
+  - controller/
+  - model/
+  - routes/
+  - view/
+  - .htaccess
+- env/
+  - .env.sample
+  - .htaccess
+- storage/
+  - log/
+  - .htaccess
+- system/
+  - bootstrap/
+  - class/
+  - constant/
+  - template/
+  - .htaccess
+- .htaccess
+- composer.json
+- index.php
+```
 
 ## Author
 [fumiya5863](https://github.com/fumiya5863)
