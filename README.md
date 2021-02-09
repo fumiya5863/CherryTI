@@ -1,5 +1,8 @@
 # CherryTI
 
+## Image
+![CheeryTI Image](assets/CherryTI.PNG)
+
 ## Overview
 Homebrew framework using PHP
 
