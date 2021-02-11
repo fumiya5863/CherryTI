@@ -40,7 +40,7 @@ class _Error {
      *
      * @return void
      */
-    public function _error_shutdown_handler()
+    public function _error_shutdown_handler(): void
     {
         if (!($_tmp_error = error_get_last())) {
             return;
@@ -86,6 +86,8 @@ class _Error {
    {
         if ($_ENV["APP_DEBUG"] === "On") {
             $this->_error_display();
+        } else {
+            $this->_response_error_http_status_code(HTTP_STATUS_CODE_500);
         }
         exit;
    } 
