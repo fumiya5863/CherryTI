@@ -18,6 +18,8 @@ class _Loader {
         $this->_load_error();
         
         $this->_load_app_route();
+
+        $this->_load_not_route_display();
     }
 
     /**
@@ -71,5 +73,15 @@ class _Loader {
     private function _load_app_route(): void
     {
         _load_app_files(ROUTES_PATH);
+    }
+
+    /**
+     * Show 404 if url doesn't match route
+     *
+     * @return void
+     */
+    private function _load_not_route_display(): void
+    {
+        _Error::_response_error_http_status_code(HTTP_STATUS_CODE_404);
     }
 }

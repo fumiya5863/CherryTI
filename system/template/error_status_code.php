@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="text-align: center;">404</h1>
+    <h1 style="text-align: center;"><?= $_http_status_code; ?></h1>
 </body>
 </html>

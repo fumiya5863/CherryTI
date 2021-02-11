@@ -55,6 +55,19 @@ class _Error {
    }
 
    /**
+    * Error HTTP status code returned
+    *
+    * @param int $_http_status_code
+    * @return void
+    */
+   public static function _response_error_http_status_code(int $_http_status_code): void
+   {
+        http_response_code($_http_status_code);
+        require_once(TEMPLATE_PATH . "error_status_code.php");
+        exit;
+   } 
+
+   /**
     * Whether it matches the type of error
     *
     * @return boolean
