@@ -34,19 +34,4 @@ class _Model {
 
         return $database->connection();
     }
-
-    /**
-     * Convert object to a two-dimensional array
-     *
-     * @param object $_array
-     * @return array
-     */
-    protected function _result_array(object $_array): array
-    {
-        $_confirm_arrays = [];
-        foreach($_array as $_keys => $_object) {
-            $_confirm_arrays[] = (array)$_object;
-        }
-        return $_confirm_arrays;
-    }
 }
