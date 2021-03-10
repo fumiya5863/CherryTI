@@ -4,6 +4,11 @@
     "description": "The CherryTI Framework.",
     "homepage": "https://github.com/fumiya5863/CherryTI",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "fumiya5863"
+        }
+    ],
     "require": {
         "illuminate/database": "^7.0",
         "vlucas/phpdotenv": "^5.0"
