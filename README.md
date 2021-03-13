@@ -10,6 +10,34 @@ Homebrew framework using PHP
 - PHP
 - MySQL
 
+## How to install
+git
+
+```shell
+git clone https://github.com/fumiya5863/CherryTI.git
+```
+
+composer
+
+```shell
+composer create-project fumiya5863/cherry-ti
+or
+composer create-project fumiya5863/cherry-ti --prefer-dist
+```
+
+## How to use
+
+When downloaded with Compoer or github, the folder name is different. I will fix it, so please wait for a while
+
+```shell
+cd CherryTI
+or
+cd cherry-ti
+
+cd env
+cp .env.sample .env
+```
+
 ## Usage
 Why don't you play with the lightweight framework and play around with it?
 
