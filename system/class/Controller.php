@@ -68,4 +68,15 @@ class _Controller {
             }
         }
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $_file_name
+     * @return void
+     */
+    protected function _load_library($_library_name): void
+    {
+        $this->$_library_name = new $_library_name();
+    }
 }
