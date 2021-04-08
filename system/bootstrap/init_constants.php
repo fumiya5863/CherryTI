@@ -13,7 +13,7 @@ define("CLASS_PATH", SYSTEM_PATH . "class/");
 
 define("CONSTANT_PATH", SYSTEM_PATH . "constant/");
 
-define("LIBRARY_PATH", SYSTEM_PATH . "library/");
+define("HELPER_PATH", SYSTEM_PATH . "helper/");
 
 define("EXTERNAL_PATH", SYSTEM_PATH . "external/");
 
@@ -29,7 +29,7 @@ define(
             "db.php",
             "error.php"
         ],
-        LIBRARY_PATH => [
+        HELPER_PATH => [
             "Session.php"
         ],
         CLASS_PATH => [

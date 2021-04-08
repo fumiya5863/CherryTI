@@ -70,13 +70,13 @@ class _Controller {
     }
 
     /**
-     * Undocumented function
+     * Load helper
      *
-     * @param string $_file_name
+     * @param string $_helper_name
      * @return void
      */
-    protected function _load_library($_library_name): void
+    protected function _load_helper($_helper_name): void
     {
-        $this->$_library_name = new $_library_name();
+        $this->$_helper_name = new $_helper_name();
     }
 }
